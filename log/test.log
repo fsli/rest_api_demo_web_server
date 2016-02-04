@@ -1,0 +1,24 @@
+  [1m[36m (112.7ms)[0m  [1mDROP DATABASE IF EXISTS "web_app_test"[0m
+  [1m[35m (318.5ms)[0m  CREATE DATABASE "web_app_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.9ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "picture" character varying) 
+  [1m[36m (1.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160120071316')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151218233752')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "users" ("id", "username", "created_at", "updated_at") VALUES (1, 'MyText', '2016-01-26 07:41:33', '2016-01-26 07:41:33')[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "users" ("id", "username", "created_at", "updated_at") VALUES (1, 'MyText', '2016-01-26 07:41:33', '2016-01-26 07:41:33')
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("id", "username", "created_at", "updated_at") VALUES (1, 'MyText', '2016-01-26 07:41:33', '2016-01-26 07:41:33')
+  [1m[36mFixture Insert (0.7ms)[0m  [1mINSERT INTO "users" ("id", "username", "created_at", "updated_at") VALUES (1, 'MyText', '2016-01-26 07:41:33', '2016-01-26 07:41:33')[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
